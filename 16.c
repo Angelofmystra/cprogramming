@@ -1,5 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+/*
+ * This .c file needs work. Check the comments. Also, it is untested. The algorithm is legit, however. :)
+ *
+ */
 int choose_pivot(int A[], int left, int right)
 {
     return left; // weak basic implementation
