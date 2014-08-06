@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 /*
  * This .c file needs work. Check the comments. Also, it is untested. The algorithm is legit, however. :)
  *
  */
 int choose_pivot(int A[], int left, int right)
 {
-    return left; // weak basic implementation
+    return left + (right-left)/2; // weak basic implementation
 }
 int swap(int A[], int a, int b)
 {
@@ -48,22 +49,32 @@ int quicksort(int A[], int i, int k)
     return 0;
 }
 
+int print_array(int A[], int size)
+{
+    for(int i = 0; i < size; i++)
+    {   
+        printf("%d\n", A[i]);
+    }
+    printf("\n\n");
+    return 0;
+}
+
 int main()
 {
     int size = 20;
     int array[size];
-
+    
+    time_t t;
+    srand((unsigned) time(&t));
     for(int i = 0; i < size; i++)
     {
         array[i] = rand() % 50;
     }
-
+    
+    print_array(array, size);   // print before
     quicksort(array, 0, size-1);
-
-    for(int i = 0; i < size; i++)
-    {
-        printf("%d\n", array[i]);
-    }
+    print_array(array, size);   // print after
+    
     return 0;
 }
 
