@@ -42,7 +42,7 @@ void print(int A[], int n)
 
 int * generate(int size, int range)
 {
-    int *array;
+    int *array = (int *)malloc(size * sizeof(int));
     time_t t;
     srand((unsigned) time(&t));
     for(int i = 0 ; i < size ; i++ )
@@ -55,9 +55,11 @@ int main()
     int size = 10, range = 50;
     int *p;
     p = generate(size,range);
+    print(p, size);
     map(p, size, product, 3);
     print(p, size);
     map2(p, size, positive);
     map2(p, size, negative);
     print(p, size);
+    free(p);
 }
