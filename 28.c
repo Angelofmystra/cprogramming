@@ -38,6 +38,10 @@ int main()
     int array[size];
     forLoop(array, size, multiply);
     forLoop2(array, size, multiply(size));
+    GenericForLoop(array, size, multiply);
+    GenericDatastructureForLoop(array, size, multiply); // yes function should work on arrays
+    // create datastructure
+    // GenericDatastructureForLoop(&datastructure, size, multiply);
     return 0;
 }
 
