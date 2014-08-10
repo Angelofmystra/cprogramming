@@ -82,21 +82,36 @@ int even(int x)
 void filter(int A[], int n, int (*func)(), int *param)
 {
     for(int i = 0; i < n; i++)
-        if(!func(param)){
-            int j = i;
-            for ( j = j - 1 ; j < n - 1 ; j++ )
+        if(!func(A[i], param)){
+            int j; 
+            for ( j = i ; j < n - 1 ; j++ )
                 A[j] = A[j+1];
         }
 }
 
 void filter2(int A[], int n, int (*func)())
 {
+    int num_of_removals;
     for(int i = 0; i < n; i++)
         if(!func(A[i])){
-            int j = i;
-            for ( j = j - 1 ; j < n - 1 ; j++ )
+            int j;
+            for ( j = i ; j < n - 1 ; j++ )
                 A[j] = A[j+1];
+            num_of_removals++;
         }
+}
+
+int * filter3(int A[], int n, int (*func)())
+{
+    int num_of_removals;
+    for(int i = 0; i < n; i++)
+        if(!func(A[i])){
+            int j;
+            for ( j = i ; j < n - 1 ; j++ )
+                A[j] = A[j+1];
+            num_of_removals++;
+        }
+    return (int *)malloc((n-num_of_removals) * sizeof(int));
 }
 
 int main()
@@ -104,14 +119,19 @@ int main()
     int size = 10, range = 50;
     int *arr;
     arr = generate(size,range);
+    printf("Default:\n");
     print(arr, size);
     //map2(arr, size, positive);
+    printf("Negative: \n");
     map2(arr, size, negative);
     print(arr, size);
+    printf("Odd now:\n");
     filter2(arr, size, odd);
     print(arr, size);
+    printf("Product:\n");
     map2(arr, size, product);
     print(arr, size);
+    printf("Multiply:\n");
     map(arr, size, multiply, 2);
     print(arr, size);
     free(arr);
