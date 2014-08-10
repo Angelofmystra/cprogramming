@@ -12,10 +12,16 @@ void forLoop(int A[], int n, int (*func)())
         A[i] = func(i);        
 }
 
-void forLoop2(int A[], int n, int (*func)(int x))
+void forLoop2(int A[], int n, int (*func)(int))
 {
     for(int i = 0; i < n; i++)
-        A[i] = func(x);
+        A[i] = func();
+}
+
+void forLoop3(int A[], int n, int (*func)(), int param)
+{
+    for(int i = 0; i < n; i++)
+        A[i] = func(param);
 }
 /*
  * Apply the function to each element in the array. Make sure the types line up.
@@ -38,6 +44,7 @@ int main()
     int array[size];
     forLoop(array, size, multiply);
     forLoop2(array, size, multiply(size));
+    forLoop3(array, size, multiply, 3);
     GenericForLoop(array, size, multiply);
     GenericDatastructureForLoop(array, size, multiply); // yes function should work on arrays
     // create datastructure
