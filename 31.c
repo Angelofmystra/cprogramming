@@ -15,13 +15,13 @@ int negative(int x)
 }
 
 /* Multiply the number with itself */
-int multiply(int x)
+int product(const int x)
 {
     return x*x;
 }
 
 /* maps a function with a parameter to an array */ 
-void map(int A[], int n, int (*func)(const int *), int *param)
+void map(int A[], int n, int (*func)(), int param)
 {
     for(int i = 0; i < n; i++)
         A[i] = func(param);
@@ -41,20 +41,23 @@ void print(int A[], int n)
 }
 
 int * generate(int size, int range)
-    int array[size];
+{
+    int *array;
     time_t t;
     srand((unsigned) time(&t));
-    for( i = 0 ; i < n ; i++ )
-        array[i] = rand % range;
+    for(int i = 0 ; i < size ; i++ )
+        array[i] = rand() % range;
     return array;
 }
 
 int main()
 {
     int size = 10, range = 50;
-    int *array;
-    array = generate(size,range);
-    map(array, size, multiply, 3);
-    map2(array, size, positive);
-    map2(array, size, negative);
+    int *p;
+    p = generate(size,range);
+    map(p, size, product, 3);
+    print(p, size);
+    map2(p, size, positive);
+    map2(p, size, negative);
+    print(p, size);
 }
