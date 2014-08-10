@@ -56,10 +56,10 @@ int main()
     int *p;
     p = generate(size,range);
     print(p, size);
-    map(p, size, product, 3);
-    print(p, size);
-    map2(p, size, positive);
+    //map2(p, size, positive);
     map2(p, size, negative);
+    print(p, size);
+    map(p, size, product, 3);
     print(p, size);
     free(p);
 }
