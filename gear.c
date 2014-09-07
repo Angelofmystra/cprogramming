@@ -1,5 +1,11 @@
 #include <stdio.h>
 #include <string.h>
+/*
+ * TODO: Remove the hard coded data and include a way to read data from flat storage
+ * TODO: Create a way for a name to get a prefix that is dependent on the type of mechanic and the item level
+ *
+ *
+ */
 
 /* quality */
 
